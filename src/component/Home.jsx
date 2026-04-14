@@ -1,11 +1,9 @@
 import React from "react";
-// import bgImage from "../assets/bgAyman.png";
-// import bgImage11 from "../assets/drAyman11.png";
-import bgImage33 from "../assets/drAyman33.png";
-
-import chosen from "../assets/chosen1.png";
+import bgImage33 from "../assets/Ashraf3.png";
+import { motion } from "framer-motion";
 import Services from "./Services";
 import { NavLink } from "react-router-dom";
+import WhyUs from "./WhyUs";
 
 
 export default function Home() {
@@ -26,163 +24,158 @@ export default function Home() {
 
           <div className="max-w-xl  space-y-6">
             <h2 className="text-4xl md:text-6xl font-bold leading-tight">
-              د/ أيمن الجمل
+              د/ اشرف عباس
             </h2>
             <p className="text-lg md:text-2xl text-gray-200 leading-relaxed">
-              استشاري أمراض الكبد والجهاز الهضمي، ومناظير الجهاز الهضمي كليه الطب جامعه المنوفيه
-            </p>
+              دكتوراه واستشاري جراحه المخ والأعصاب والعمود الفقري
+              مستشفى جراحه المخ والأعصاب ب شبين الكوم
+          </p>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="flex justify-start gap-4 flex-wrap"
+          >
 
-            <div className="flex justify-start gap-4 flex-wrap">
-              <NavLink
-                to="/Booking"
-                className="bg-blue-600 cursor-pointer hover:bg-blue-700 px-6 py-3 rounded-xl font-semibold transition"
-              >
+            {/* PRIMARY BUTTON */}
+            <NavLink
+              to="/Booking"
+              className="relative group px-7 py-3 rounded-xl font-semibold text-white overflow-hidden"
+            >
+
+              {/* gradient background */}
+              <span className="absolute inset-0 bg-gradient-to-r from-blue-600 to-indigo-600"></span>
+
+              {/* shine animation */}
+              <span className="absolute inset-0 -translate-x-full group-hover:translate-x-0 transition-transform duration-700 bg-gradient-to-r from-transparent via-white/30 to-transparent"></span>
+
+              {/* glow border */}
+              <span className="absolute inset-0 rounded-xl ring-1 ring-white/20 group-hover:ring-white/40 transition"></span>
+
+              {/* hover lift */}
+              <span className="relative z-10 group-hover:scale-105 transition duration-300 inline-block">
                 احجز الآن
-              </NavLink>
+              </span>
 
-              <NavLink
-                to="/About"
-                className="border cursor-pointer border-white px-6 py-3 rounded-xl hover:bg-white hover:text-black transition"
-              >
+            </NavLink>
+
+            {/* SECONDARY BUTTON */}
+            <NavLink
+              to="/About"
+              className="relative group px-7 py-3 rounded-xl font-semibold text-white border border-white/40 backdrop-blur-md overflow-hidden"
+            >
+
+              {/* background fill on hover */}
+              <span className="absolute inset-0 bg-white scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300"></span>
+
+              {/* glow */}
+              <span className="absolute inset-0 opacity-0 group-hover:opacity-20 bg-white blur-xl transition"></span>
+
+              {/* text */}
+              <span className="relative z-10 group-hover:text-black transition">
                 اعرف المزيد
-              </NavLink>
-            </div>
+              </span>
 
+            </NavLink>
+
+          </motion.div>
           </div>
-
         </div>
       </section>
+
+{/* Section 2: Services */}
       <Services/>
 {/* Section 3: Why Choose Us */}
-    <section className="py-20 bg-gray-50">
-      <div className="container mx-auto px-6 md:px-12">
+      <WhyUs/>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+    <section className="relative py-24 overflow-hidden text-white bg-gradient-to-r from-blue-600 via-blue-700 to-indigo-700">
 
-          {/* Image */}
-          <div className="relative">
-            <div className="flex justify-center" >
-              <img
-              src={chosen}
-              alt="Doctor"
-              className="w-[80%] rounded-3xl shadow-2xl"
-            />
-            </div>
+      {/* background glow */}
+      <div className="absolute -top-20 -left-20 w-96 h-96 bg-white/10 blur-3xl rounded-full"></div>
+      <div className="absolute bottom-0 -right-20 w-96 h-96 bg-white/10 blur-3xl rounded-full"></div>
 
-            {/* Decorative Shape */}
-            <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-blue-600/20 rounded-full blur-2xl"></div>
-          </div>
+      {/* floating shapes */}
+      <div className="absolute top-10 left-1/3 w-4 h-4 bg-white/40 rounded-full animate-pulse"></div>
+      <div className="absolute bottom-16 right-1/3 w-3 h-3 bg-white/30 rounded-full animate-bounce"></div>
 
-          {/* Content */}
-          <div className="space-y-6 text-right">
+      <div className="container mx-auto px-6 md:px-12 relative z-10">
 
-            <h2 className="text-3xl md:text-5xl font-bold text-gray-800 leading-tight">
-              لماذا تختار <span className="text-blue-600">د/ أيمن الجمل ؟</span>
-            </h2>
+        <div className="text-center space-y-8 max-w-3xl mx-auto">
 
-            <p className="text-gray-600 text-lg leading-relaxed">
-              نقدم رعاية طبية متكاملة باستخدام أحدث الأجهزة والتقنيات الحديثة،
-              مع خبرة طويلة في تشخيص وعلاج أمراض الكبد والجهاز الهضمي بدقة واحترافية.
-            </p>
+          {/* Title */}
+          <motion.h2
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-3xl md:text-5xl font-extrabold leading-tight"
+          >
+            احجز موعدك الآن مع <br />
+            <span className="text-yellow-300 drop-shadow-md">
+              د/  اشرف عباس
+            </span>
+          </motion.h2>
 
-            {/* Features */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
+          {/* Description */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="text-lg text-blue-100 leading-relaxed"
+          >
+            احصل على استشارة طبية دقيقة باستخدام أحدث التقنيات،
+            واحجز موعدك بسهولة في دقائق قليلة.
+          </motion.p>
 
-              {[
-                "خبرة أكثر من 10 سنوات",
-                "أحدث أجهزة المناظير",
-                "متابعة مستمرة للحالات",
-                "دقة في التشخيص والعلاج",
-              ].map((item, index) => (
-                <div
-                  key={index}
-                  className="flex items-center gap-3 bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition"
-                >
-                  <div className="w-10 h-10 flex items-center justify-center bg-blue-600 text-white rounded-full text-lg">
-                    ✓
-                  </div>
+          {/* Buttons */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+            className="flex gap-4 flex-wrap justify-center"
+          >
 
-                  <span className="text-gray-700 font-medium">
-                    {item}
-                  </span>
-                </div>
-              ))}
+            {/* PRIMARY */}
+            <NavLink
+              to="/Booking"
+              className="relative group px-8 py-3 rounded-xl font-semibold text-blue-700 bg-white overflow-hidden shadow-xl"
+            >
 
-            </div>
+              {/* shine effect */}
+              <span className="absolute inset-0 -translate-x-full group-hover:translate-x-0 transition-transform duration-700 bg-gradient-to-r from-transparent via-blue-200/40 to-transparent"></span>
 
-            {/* Button */}
-            <div className="pt-6">
-              <NavLink
-                to="/Booking"
-                className="inline-block bg-blue-600 hover:bg-white  text-white hover:text-blue-700 hover:border hover:border-blue-700 px-8  py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
-              >
-                احجز استشارة الآن
-              </NavLink>
-            </div>
-
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-
-    <section className="py-20 bg-linear-to-r from-blue-600 to-blue-700 text-white">
-      <div className="container mx-auto px-6 md:px-12">
-
-        <div className="grid  items-center">
-
-
-          <div className="space-y-6 text-center">
-
-            <h2 className="text-3xl md:text-5xl font-bold leading-tight">
-              احجز موعدك الآن مع <br />
-              <span className="text-yellow-300">د/ أيمن الجمل</span>
-            </h2>
-
-            <p className="text-lg text-blue-100 leading-relaxed">
-              احصل على استشارة طبية دقيقة باستخدام أحدث التقنيات،
-              واحجز موعدك بسهولة في دقائق قليلة.
-            </p>
-
-            <div className="flex gap-4 flex-wrap justify-center">
-              <NavLink
-                to="/Booking"
-                className="bg-white text-blue-700 px-8 py-3  rounded-xl font-semibold hover:bg-blue-700 hover:text-white hover:border hover:border-white transition shadow-lg"
-              >
+              {/* hover lift */}
+              <span className="relative z-10 group-hover:scale-105 transition inline-block">
                 احجز الآن
-              </NavLink>
+              </span>
+            </NavLink>
 
-              <NavLink
-                to="/Contact"
-                className="border border-white px-8 py-3 rounded-xl hover:bg-white hover:text-blue-700 transition"
-              >
+            {/* SECONDARY */}
+            <NavLink
+              to="/Contact"
+              className="relative group px-8 py-3 rounded-xl font-semibold border border-white/60 overflow-hidden"
+            >
+
+              {/* fill effect */}
+              <span className="absolute inset-0 bg-white scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300"></span>
+
+              {/* glow */}
+              <span className="absolute inset-0 opacity-0 group-hover:opacity-20 bg-white blur-xl transition"></span>
+
+              <span className="relative z-10 group-hover:text-blue-700 transition">
                 تواصل معنا
-              </NavLink>
-            </div>
+              </span>
 
-          </div>
+            </NavLink>
 
-
-
+          </motion.div>
 
         </div>
-
       </div>
     </section>
-
-
-
-
 
 
 
     </div>
-
-
-
-
-
 
   );
 }

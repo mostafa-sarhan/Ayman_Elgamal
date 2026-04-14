@@ -1,105 +1,130 @@
 import React from "react";
-import doctorImg from "../assets/ayman21.jpg";
+import doctorImg from "../assets/About.png";
 import { NavLink } from "react-router-dom";
+import { motion } from "framer-motion";
+import { Check } from "lucide-react";
 
 export default function About() {
+
+  const features = [
+    "استخدام أحدث الأجهزة الطبية",
+    "تشخيص دقيق وخطة علاج متكاملة",
+    "متابعة مستمرة للحالة",
+  ];
+
   return (
-    <section className="py-20 bg-gray-50">
-      <div className="container mx-auto px-6 md:px-12">
+    <section className="py-28 bg-gradient-to-br from-gray-50 via-white to-gray-100 relative overflow-hidden">
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
+      {/* background glow */}
+      <div className="absolute top-0 right-0 w-72 h-72 bg-blue-200 blur-3xl opacity-30 rounded-full"></div>
+      <div className="absolute bottom-0 left-0 w-72 h-72 bg-indigo-200 blur-3xl opacity-30 rounded-full"></div>
 
-          {/* Image */}
-          <div className="relative w-full flex justify-center items-center">
+      <div className="container mx-auto px-6 md:px-12 relative z-10">
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+
+          {/* IMAGE */}
+          <motion.div
+            initial={{ opacity: 0, x: -80 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            className="relative flex justify-center group"
+          >
+            {/* glow behind */}
+            <div className="absolute w-[70%] h-[90%] bg-gradient-to-r from-blue-500 to-indigo-600 blur-2xl opacity-20 rounded-3xl group-hover:opacity-30 transition"></div>
+
             <img
               src={doctorImg}
               alt="Doctor"
-              className="w-[65%] rounded-3xl shadow-2xl object-cover"
+              className="relative w-[70%] rounded-3xl shadow-[0_25px_70px_rgba(0,0,0,0.2)] object-cover transition duration-500 group-hover:scale-105"
             />
 
-            {/* Decoration */}
-            <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-blue-600/20 rounded-full blur-2xl"></div>
-          </div>
+            {/* floating badge */}
+            <div className="absolute top-6 right-10 bg-white/80 backdrop-blur-md px-4 py-2 rounded-xl shadow-md text-sm font-medium">
+              ⭐ استشاري أمراض  المخ والأعصاب
+            </div>
+          </motion.div>
 
-          {/* Content */}
-          <div className="space-y-6 text-right">
+          {/* CONTENT */}
+          <motion.div
+            initial={{ opacity: 0, x: 80 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            className="space-y-8 text-right"
+          >
 
-            <h2 className="text-3xl md:text-5xl font-bold text-gray-800 leading-tight">
-              عن <span className="text-blue-600">د/ أيمن الجمل</span>
+            {/* Title */}
+            <h2 className="text-4xl md:text-5xl font-extrabold leading-tight">
+              عن{" "}
+              <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent">
+                د/  اشرف عباس
+              </span>
             </h2>
 
-            <p className="text-gray-600 text-lg leading-relaxed">
-              استشاري أمراض الكبد والجهاز الهضمي ومناظير الجهاز الهضمي،
-              يتمتع بخبرة طويلة في تشخيص وعلاج الحالات المختلفة باستخدام
-              أحدث التقنيات الطبية لضمان أفضل رعاية للمرضى.
-            </p>
+            {/* Description */}
+          <p className="text-gray-600 text-lg leading-relaxed">
+            استشاري جراحة المخ والأعصاب، يتمتع بخبرة طويلة في تشخيص وعلاج أمراض
+            الجهاز العصبي باستخدام أحدث التقنيات الطبية الدقيقة، لضمان أفضل رعاية
+            ونتائج علاجية للمرضى.
+          </p>
 
-            {/* Stats */}
-            <div className="grid grid-cols-3 gap-4 pt-4">
+            {/* STATS (premium cards) */}
+            <div className="grid grid-cols-3 gap-4 pt-2">
 
-              <div className="bg-white p-4 rounded-xl shadow text-center">
-                <h3 className="text-2xl font-bold text-blue-600">10+</h3>
-                <p className="text-gray-500 text-sm">سنوات خبرة</p>
-              </div>
-
-              <div className="bg-white p-4 rounded-xl shadow text-center">
-                <h3 className="text-2xl font-bold text-blue-600">5000+</h3>
-                <p className="text-gray-500 text-sm">حالة ناجحة</p>
-              </div>
-
-              <div className="bg-white p-4 rounded-xl shadow text-center">
-                <h3 className="text-2xl font-bold text-blue-600">100%</h3>
-                <p className="text-gray-500 text-sm">رضا المرضى</p>
-              </div>
+              {[
+                { num: "10+", label: "سنوات خبرة" },
+                { num: "5000+", label: "حالة ناجحة" },
+                { num: "100%", label: "رضا المرضى" },
+              ].map((item, i) => (
+                <div
+                  key={i}
+                  className="bg-white/70 backdrop-blur-lg border border-gray-100 p-5 rounded-2xl text-center shadow-sm hover:shadow-xl transition hover:-translate-y-2"
+                >
+                  <h3 className="text-2xl font-bold text-blue-600">
+                    {item.num}
+                  </h3>
+                  <p className="text-gray-500 text-sm mt-1">
+                    {item.label}
+                  </p>
+                </div>
+              ))}
 
             </div>
 
-            {/* Features */}
-            <div className="space-y-3 pt-4">
+            {/* FEATURES */}
+            <div className="space-y-4">
 
-              <div className="flex items-center gap-3 justify-start">
-                <span className="w-8 h-8 flex items-center justify-center bg-blue-600 text-white rounded-full">
-                  ✓
-                </span>
-                <span className="text-gray-700">
-                  استخدام أحدث الأجهزة الطبية
-                </span>
-              </div>
+              {features.map((item, i) => (
+                <div
+                  key={i}
+                  className="flex items-center gap-4 bg-white/60 backdrop-blur-lg p-4 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition"
+                >
+                  <div className="w-9 h-9 flex items-center justify-center bg-gradient-to-r from-blue-500 to-indigo-600 text-white rounded-full">
+                    <Check size={16} />
+                  </div>
 
-              <div className="flex items-center gap-3 justify-start">
-                <span className="w-8 h-8 flex items-center justify-center bg-blue-600 text-white rounded-full">
-                  ✓
-                </span>
-                <span className="text-gray-700">
-                  تشخيص دقيق وخطة علاج متكاملة
-                </span>
-              </div>
-
-              <div className="flex items-center gap-3 justify-start">
-                <span className="w-8 h-8 flex items-center justify-center bg-blue-600 text-white rounded-full">
-                  ✓
-                </span>
-                <span className="text-gray-700">
-                  متابعة مستمرة للحالة
-                </span>
-              </div>
+                  <span className="text-gray-700 font-medium">
+                    {item}
+                  </span>
+                </div>
+              ))}
 
             </div>
 
             {/* CTA */}
-            <div className="pt-6">
+            <div className="pt-4">
               <NavLink
                 to="/Booking"
-                className="inline-block bg-blue-600 text-white px-8 py-3 rounded-xl font-semibold hover:bg-blue-700 transition shadow-lg"
+                className="relative inline-block px-8 py-3 rounded-xl font-semibold text-white bg-gradient-to-r from-blue-600 to-indigo-600 shadow-lg overflow-hidden group"
               >
-                احجز موعد الآن
+                <span className="relative z-10">احجز موعد الآن</span>
+                <span className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition"></span>
               </NavLink>
             </div>
 
-          </div>
+          </motion.div>
 
         </div>
-
       </div>
     </section>
   );
